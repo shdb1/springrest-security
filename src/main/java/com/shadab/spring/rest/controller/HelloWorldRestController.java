@@ -65,7 +65,6 @@ public class HelloWorldRestController {
         userService.saveUser(user);
  
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
  

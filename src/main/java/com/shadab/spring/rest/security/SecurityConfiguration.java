@@ -18,8 +18,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("bill").password("abc123").roles("ADMIN");
-		auth.inMemoryAuthentication().withUser("tom").password("abc123").roles("USER");
+		auth.inMemoryAuthentication().withUser("johny").password("johnysecured").roles("ADMIN");
+		auth.inMemoryAuthentication().withUser("tomy").password("tom123").roles("USER");
+		
+		
+		/* auth.jdbcAuthentication().dataSource(dataSource)
+		.usersByUsernameQuery(
+		"select username,password, enabled from students where username=?")
+		.authoritiesByUsernameQuery(
+		"select username, role from rioles where username=?");*/
+		
+		
 	}
 	
 	@Override
@@ -36,8 +45,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		return new CustomBasicAuthenticationEntryPoint();
 	}
 	
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
-    }
+   
 }
